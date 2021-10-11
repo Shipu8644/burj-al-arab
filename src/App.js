@@ -32,6 +32,9 @@ function App() {
           <PrivateRoute path="/contact">
             <Contact></Contact>
           </PrivateRoute>
+          <PrivateRoute path="/book">
+            <Book></Book>
+          </PrivateRoute>
           <Route exact path="/">
             <Home />
           </Route>
