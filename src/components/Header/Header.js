@@ -6,7 +6,7 @@ import logo from '../../images/icons/logo.png';
 import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
-    const { user, logOut, signInUsingGoogle } = useAuth();
+    const { user, logOut } = useAuth();
     return (
         <div style={{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${header})` }} className="header">
             <nav className="nav">
@@ -18,7 +18,7 @@ const Header = () => {
                         <Link to="/home">Home</Link>
                     </li>
                     <li>
-                        {!user.email ? <Link onClick={signInUsingGoogle} to="/login">Login</Link>
+                        {!user.email ? <Link to="/login">Login</Link>
                             :
                             <button onClick={logOut}>Logout</button>
                         }
@@ -27,10 +27,13 @@ const Header = () => {
                     <li>
                         <Link className="btn-book" to="/book">Book</Link>
                     </li>
+                    <li>
+                        <Link className="btn-book" to="/contact">Contact</Link>
+                    </li>
+
                     {
                         user.email &&
                         <span className="name"> Hey {user.displayName}</span>
-
 
                     }
                 </ul>

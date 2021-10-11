@@ -10,6 +10,8 @@ import Login from './components/Login/Login';
 import Book from './components/Book/Book';
 import Header from './components/Header/Header';
 import AuthProvider from './context/AuthProvider';
+import Contact from './components/Contact/Contact';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 function App() {
@@ -24,9 +26,12 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/book/:bedType">
+          <PrivateRoute path="/book/:bedType">
             <Book />
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path="/contact">
+            <Contact></Contact>
+          </PrivateRoute>
           <Route exact path="/">
             <Home />
           </Route>
