@@ -26,3 +26,9 @@
     color: rgba(255, 255, 255, 0.877);
     font-weight: bold;
   }
+  .name{
+      color: white;
+      font-size: large;
+      color: red;
+      margin-left: 10px;
+  }

@@ -3,24 +3,36 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import header from '../../images/header.png';
 import logo from '../../images/icons/logo.png';
+import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
+    const { user, logOut, signInUsingGoogle } = useAuth();
     return (
         <div style={{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${header})` }} className="header">
             <nav className="nav">
                 <ul>
                     <li>
-                        <img className="logo" src={logo} alt=""/>
+                        <img className="logo" src={logo} alt="" />
                     </li>
                     <li>
                         <Link to="/home">Home</Link>
                     </li>
                     <li>
-                        <Link to="/login">Login</Link>
+                        {!user.email ? <Link onClick={signInUsingGoogle} to="/login">Login</Link>
+                            :
+                            <button onClick={logOut}>Logout</button>
+                        }
                     </li>
+
                     <li>
                         <Link className="btn-book" to="/book">Book</Link>
                     </li>
+                    {
+                        user.email &&
+                        <span className="name"> Hey {user.displayName}</span>
+
+
+                    }
                 </ul>
             </nav>
             <div className="title-container">
